@@ -24,6 +24,16 @@ A team project for EMSE 2801: Fundamentals of Systems Engineering (Fall 2024). W
 
 ![System architecture](figures/system_architecture.png)
 
+## Robot code
+
+[`robotc/line_wall_follower.c`](robotc/line_wall_follower.c) is our final RobotC program for the Line/Wall Follower challenge (Demo E). The robot:
+
+- **Follows the line** using a grayscale light sensor (threshold 234), steering one way on the dark line and the other way off it.
+- **Switches to wall following** when it loses the line for more than a second.
+- **Detects walls** with a distance sensor. When it reaches a wall, it turns right to check for an opening, and turns left if the right side is blocked.
+- **Makes accurate 90° turns** with a gyroscope-controlled turn function.
+- **Shows its current mode** on a touch LED: yellow for line following, blue for wall following and red while searching for the line.
+
 ## Verification test: gyroscope drift
 
 We tested how turn speed affects the accuracy of 90° turns. The robot made four turns at each of three speeds, three trials each, and we measured how far it ended from 90°.
@@ -48,6 +58,7 @@ python analyze_gyro_drift.py
 ## Repository structure
 
 ```
+├── robotc/line_wall_follower.c         # Final RobotC program (Demo E)
 ├── report/VEX_Robot_Final_Report.pdf   # Full final report
 ├── data/gyroscope_drift.csv            # Test data (Appendix A of the report)
 ├── analyze_gyro_drift.py               # Summary statistics and boxplot
